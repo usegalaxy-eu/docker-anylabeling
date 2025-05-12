@@ -59,10 +59,9 @@ RUN wget https://github.com/conda-forge/miniforge/releases/latest/download/Minif
     && bash Miniforge3-Linux-x86_64.sh -b -p /opt/conda \
     && rm -f Miniforge3-Linux-x86_64.sh 
 
-RUN conda install mamba -n base -c conda-forge && \
-    mamba create -y --name anylabeling python=3.12 && \
+RUN conda create -y --name anylabeling python=3.12 && \
     /opt/conda/envs/anylabeling/bin/pip install anylabeling-gpu && \
-    /opt/conda/envs/anylabeling/bin/pip install PyQt5 
+    /opt/conda/envs/anylabeling/bin/pip install PyQt5==5.15.9 
 
 
 EXPOSE 5800
