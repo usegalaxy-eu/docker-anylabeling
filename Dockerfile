@@ -77,5 +77,5 @@ ENV TAKE_CONFIG_OWNERSHIP=1
 ENV HOME=/config
 
 COPY rc.xml.template /opt/base/etc/openbox/rc.xml.template
-
+COPY .anylabelingrc /config/.anylabelingrc
 WORKDIR /config
