@@ -63,6 +63,8 @@ RUN conda create -y --name anylabeling python=3.12 && \
     /opt/conda/envs/anylabeling/bin/pip install anylabeling-gpu && \
     /opt/conda/envs/anylabeling/bin/pip install PyQt5==5.15.9 
 
+RUN sed -i 's|home_dir *= *os.path.expanduser("~")|home_dir = os.path.expanduser("~") + "/home"|' /opt/conda/envs/anylabeling/lib/python3.12/site-packages/anylabeling/services/auto_labeling/model_manager.py 
+
 
 EXPOSE 5800
 
