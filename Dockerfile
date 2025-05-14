@@ -63,6 +63,8 @@ RUN conda create -y --name anylabeling python=3.12 && \
     /opt/conda/envs/anylabeling/bin/pip install anylabeling-gpu && \
     /opt/conda/envs/anylabeling/bin/pip install PyQt5==5.15.9 
 
+# The below line is needed for Galaxy interactive tool. By default, AnyLabeling creates anylabeling_data folder in `current working directory` when it starts,
+# For now, this behavior does not seem to be configurable. This generates permission issue when running as GxIT. Related issue: https://github.com/vietanhdev/anylabeling/issues/209
 RUN sed -i 's|home_dir *= *os.path.expanduser("~")|home_dir = os.path.expanduser("~") + "/home"|' /opt/conda/envs/anylabeling/lib/python3.12/site-packages/anylabeling/services/auto_labeling/model_manager.py 
 
 
